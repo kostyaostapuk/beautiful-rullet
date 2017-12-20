@@ -64,25 +64,14 @@ $(document).ready(function() {
       }, slot3_time);
     }, 700);
 
-		// setTimeout(function(){
-		// 	slot1_time = 0;
-		// 	slot2_time = 0;
-		// 	slot3_time = 0;
-		// 	alert(slot1_time);
-		// }, 3000);
+		setTimeout(function(){
+			slot1_time = 0;
+			slot2_time = 0;
+			slot3_time = 0;
+		}, 1000);
+
+		setTimeout(stopRullet, 10000);
   });
-
-	// var boost = setInterval(function() {
-	// 	slot1_time -= 40;
-	// 	slot2_time -= 40;
-	// 	slot3_time -= 40;
-	// }, 500);
-  //
-	// setTimeout(function() {
-	// 	clearInterval(boost);
-	// }, 2000);
-
-	setTimeout(stopRullet, 10000);
 
   function stopRullet() {
     clearInterval(slot1_intrvl);
@@ -91,7 +80,7 @@ $(document).ready(function() {
     slot1_pos = 0;
     slot2_pos = 0;
     slot3_pos = 0;
-    $(".slot").css("background-position", "0 -" + 50 + "px");
+    $(".slot").css("background-position", "0 -" + 0 + "px");
     $(".slot").css("background-image", "url(../img/default.png)");
 
   }
