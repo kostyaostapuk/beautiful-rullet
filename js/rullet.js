@@ -26,7 +26,7 @@ $(document).ready(function() {
     slot3_intrvl;
 
   var posArr = [
-    0,   //number 7
+    0, //number 7
     108, //bigwin
     216, //cherry
     325, //banana
@@ -85,27 +85,52 @@ $(document).ready(function() {
     clearInterval(slot2_intrvl);
     clearInterval(slot3_intrvl);
 
-    $(".slot").css("background-image", "url(../img/default.png)");
+    displaySlots();
     slot1_pos = posArr[randomPosition()];
     slot2_pos = posArr[randomPosition()];
     slot3_pos = posArr[randomPosition()];
-    slot1.css("background-position", "0 -" + slot1_pos + "px");
-    slot2.css("background-position", "0 -" + slot2_pos + "px");
-    slot3.css("background-position", "0 -" + slot3_pos + "px");
 
-		displayResult();
+    displayResult();
   }
 
   function randomPosition() {
     var rand = Math.floor(Math.random() * posArr.length);
     return rand;
   }
-	function displayResult(){
-		var resultBox=$("#result");
-		if (slot1_pos===slot2_pos===slot3_pos) {
-			resultBox.text("You win");
-		}else {
-			resultBox.text("You lose");
-		}
-	}
+
+  function displayResult() {
+    var resultBox = $("#result");
+    defineChanceWin();
+    if (slot1_pos === slot2_pos && slot2_pos === slot3_pos) {
+      resultBox.text("You win");
+    } else {
+      resultBox.text("You lose");
+    }
+
+  }
+
+  function displaySlots() {
+    $(".slot").css("background-image", "url(../img/default.png)");
+    slot1.css("background-position", "0 -" + slot1_pos + "px");
+    slot2.css("background-position", "0 -" + slot2_pos + "px");
+    slot3.css("background-position", "0 -" + slot3_pos + "px");
+  }
+
+  function defineChanceWin() {
+    var chance = Math.floor(Math.random() * 2);
+    console.log(chance);
+    switch (chance) {
+
+      case 0:
+        //super lucky
+        slot1_pos = slot2_pos = slot3_pos;
+        displaySlots();
+        break;
+
+      case 1:
+        //lose
+        displaySlots();
+        break;
+    }
+  }
 });
