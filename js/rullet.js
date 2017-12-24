@@ -118,7 +118,6 @@ $(document).ready(function() {
 
   function defineChanceWin() {
     var chance = Math.floor(Math.random() * 2);
-    console.log(chance);
     switch (chance) {
 
       case 0:
