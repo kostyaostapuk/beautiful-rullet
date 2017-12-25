@@ -4,6 +4,8 @@
 */
 $(document).ready(function() {
 
+	var btnStart=$("#start");
+
   //Select slots
   var slot1 = $("#slot1"),
     slot2 = $("#slot2"),
@@ -39,7 +41,7 @@ $(document).ready(function() {
   var toggle = false;
 
   //Start spin
-  $("#start").click(function() {
+  btnStart.click(function() {
     var slot1_TO = setTimeout(function() {
       slot1.css("background-image", "url(../img/blur.png)");
       slot1_intrvl = setInterval(function() {
@@ -77,6 +79,7 @@ $(document).ready(function() {
     setTimeout(function() { //Stop SlideUp
       clearInterval(slideUp1, slideUp2, slideUp3);
     }, 610);
+		btnStart.prop("disabled", true);
     setTimeout(stopRullet, 3000);
   });
 
@@ -84,6 +87,9 @@ $(document).ready(function() {
     clearInterval(slot1_intrvl);
     clearInterval(slot2_intrvl);
     clearInterval(slot3_intrvl);
+
+		//disable button
+		btnStart.prop("disabled", false);
 
     displaySlots();
     slot1_pos = posArr[randomPosition()];
